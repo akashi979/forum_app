@@ -10,6 +10,16 @@ app.use(cors());
 
 mongoose.connect("mongodb+srv://forumlake:Coldicecream953.@cluster0.whoioab.mongodb.net/forumriver?retryWrites=true&w=majority");
 
+
+app.get("/",(req,res)=>{
+
+res.json({"message":"it worked"})
+
+})
+
+
+
+
 app.get("/getUsers", (req, res) => {
 
     UserModel.find({}).
@@ -31,9 +41,9 @@ app.post("/createUsers",async(req,res)=>{
   res.json(user);
 })
 
+const PORT = process.env.port | 3001 ;
+app.listen(PORT,()=>{
 
-app.listen(3001,()=>{
-
-    console.log("works wel");
+    console.log("works wel ${PORT}");
      
 });
